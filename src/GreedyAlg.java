@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.NoSuchElementException;
-import java.util.OptionalInt;
+import java.util.*;
 
 /*
     Жадный алгоритм — алгоритм,
@@ -8,26 +6,22 @@ import java.util.OptionalInt;
     допуская, что конечное решение также окажется оптимальным.
  */
 public class GreedyAlg {
-    public static long maxNumberFromArray(int[] array) throws NoSuchElementException {
-        // trows exception if array is empty
+    public static long makeMaxNumberFromArray(int[] array) {
         long number = 0;
-        while (array.length > 0) {
-            OptionalInt max = Arrays.stream(array).max();
-            number += max.getAsInt();
-             Arrays.binarySearch(array, max.getAsInt());
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int a : array) list.add(a);
+        Integer max;
+        for (int i = array.length - 1; i >= 0; i--) {
+            max = Collections.max(list);
+            number += max * (long)Math.pow(10, i);
+            list.remove(max);
         }
-
-//        System.out.println(max);
-
         return number;
     }
     public static void main(String[] args) {
-        int[] array = {3, 1, 7, 9, 9, 5};
-        try {
-            System.out.println(maxNumberFromArray(array));
-        } catch (Exception e) {
-            System.out.println("getAsInt exception: " + e);
-        }
-
+        int[] array = {3, 1, 7, 9, 9, 5, 0, 0, 4, 3, 43};
+        int[] empty_array = {0};
+        System.out.println(makeMaxNumberFromArray(array));
+        System.out.println(makeMaxNumberFromArray(empty_array));
     }
 }
