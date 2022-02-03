@@ -1,35 +1,38 @@
 package BackpackProblem;
 
-import java.util.HashMap;
-
 /**
  * created by cvenkman on 2/3/22 inside the package - BackpackProblem
  */
 public class Item {
-    public static int findMaxValueFitsInTheBackpack(int capacity,
-                                                    HashMap<Integer, Integer> value_weight) {
-        /*
-            входные данные: веса предметов (second in HashMap),
-            их ценность (first in HashMap),
-            вместимость рюкзака (capacity), количество объектов n
-            выход: максимальное значение ценности, которое помещвется
-            в рюкзак вместимостью capacity
-            note: объекты можно делить
-         */
-//        ArrayList<Integer> specific_value_of_each = new ArrayList<>();
-//        for (Map.Entry<Integer, Integer> item: value_weight.entrySet()) {
-//            specific_value_of_each.add(item.getKey() / item.getValue());
-//        }
-        int weight = 0;
-//        while (weight < capacity) {
-//            int max = Collections.max(specific_value_of_each);
-//            weight += max * value_weight.get(max);
-//            specific_value_of_each.remove(max);
+    private final int value;
+    private final int weight;
+    private final int specific_value;
+    private int how_much_in_backpack;
 
-//        }
+    public Item(int value, int weight) {
+        this.value = value;
+        this.weight = weight;
+        how_much_in_backpack = 0;
+        specific_value = value / weight;
+    }
 
+    public int getValue() {
+        return value;
+    }
 
-
+    public int getWeight() {
         return weight;
+    }
+
+    public int getHowMuchInBackpack() {
+        return how_much_in_backpack;
+    }
+
+    public void setHowMuchInBackpack(int how_much_in_backpack) {
+        this.how_much_in_backpack = how_much_in_backpack;
+    }
+
+    public int getSpecificValue() {
+        return specific_value;
     }
 }
