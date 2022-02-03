@@ -18,10 +18,33 @@ public class GreedyAlg {
         }
         return number;
     }
+
+    public static int findWayToGasStation(int[] array, int car_can_drive) {
+        int previous_stop = array[0];
+        int stop = 0;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i + 1] - previous_stop > car_can_drive) {
+                previous_stop = array[i];
+                stop++;
+                System.out.println(array[i]);
+            }
+        }
+        return stop;
+    }
+
     public static void main(String[] args) {
-        int[] array = {3, 1, 7, 9, 9, 5, 0, 0, 4, 3, 43};
-        int[] empty_array = {0};
-        System.out.println(makeMaxNumberFromArray(array));
-        System.out.println(makeMaxNumberFromArray(empty_array));
+        {
+            int[] array = {3, 1, 7, 9, 9, 5, 0, 0, 4, 3, 43};
+            int[] empty_array = {0};
+            System.out.println(makeMaxNumberFromArray(array));
+            System.out.println(makeMaxNumberFromArray(empty_array));
+        }
+        System.out.println("-------------");
+
+        int[] array = {0, 200, 375, 550, 750, 950};
+        System.out.println(findWayToGasStation(array, 400));
+        System.out.println();
+        int[] array2 = {0, 200, 401};
+        System.out.println(findWayToGasStation(array2, 400));
     }
 }
