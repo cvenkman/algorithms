@@ -4,17 +4,6 @@ import java.util.Arrays;
 
 public class BinarySearch {
     private static final int NO_ELEMENT_ERROR = -1;
-//    int[] _array;
-//    int _firstIndex;
-//    int _lastIndex;
-//
-//    public BinarySearch(int[] array) throws NullPointerException {
-//        if (array == null || array.length == 0)
-//            throw new NullPointerException("Honey, have you been forgetting array again?");
-//        _array = array;
-//        _firstIndex = 0;
-//        _lastIndex = _array.length - 1;
-//    }
 
     private static int findMidpointIndex(int[] array,
                                          int firstIndex, int lastIndex) {
